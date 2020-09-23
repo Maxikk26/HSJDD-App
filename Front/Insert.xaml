@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Front"
         mc:Ignorable="d"
-        Title="Insert" Height="599" Width="850.667">
+        Title="Insert" Height="599" Width="851">
     <Grid x:Name="chboxmiercoles" Margin="0,0,2,21">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -13,14 +13,14 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="83,108,0,0" TextWrapping="Wrap" Text="Primer Nombre" VerticalAlignment="Top" RenderTransformOrigin="-1.163,-0.125" Width="84" Grid.Column="1" Height="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="69,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-1.163,-0.125" Text="Segundo Nombre" Width="96" Grid.Column="1" Height="16"/>
-        <TextBox x:Name="txtpnombre" HorizontalAlignment="Left" Height="23" Margin="205,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
-        <TextBox x:Name="txtsnombre" HorizontalAlignment="Left" Height="23" Margin="205,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
-        <TextBox x:Name="txtpapellido" HorizontalAlignment="Left" Height="23" Margin="205,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
+        <TextBox x:Name="txtpnombre" HorizontalAlignment="Left" Height="23" Margin="205,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1" PreviewTextInput="LetterValidation"/>
+        <TextBox x:Name="txtsnombre" HorizontalAlignment="Left" Height="23" Margin="205,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1" PreviewTextInput="LetterValidation"/>
+        <TextBox x:Name="txtpapellido" HorizontalAlignment="Left" Height="23" Margin="205,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1" PreviewTextInput="LetterValidation"/>
         <TextBlock HorizontalAlignment="Left" Margin="83,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-1.163,-0.125" Text="Primer Apellido" Width="84" Grid.Column="1" Height="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="69,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-1.163,-0.125" Width="96" Grid.Column="1" Height="16"><Run Text="Segundo "/><Run Text="Apellido"/></TextBlock>
-        <TextBox x:Name="txtsapellido" HorizontalAlignment="Left" Height="23" Margin="205,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
+        <TextBox x:Name="txtsapellido" HorizontalAlignment="Left" Height="23" Margin="205,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1" PreviewTextInput="LetterValidation"/>
         <TextBlock HorizontalAlignment="Left" Margin="83,69,0,0" TextWrapping="Wrap" Text="Cédula" VerticalAlignment="Top" RenderTransformOrigin="-1.163,-0.125" Width="84" TextAlignment="Right" Grid.Column="1" Height="16"/>
-        <TextBox x:Name="txtcedula" HorizontalAlignment="Left" Height="23" Margin="205,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
+        <TextBox x:Name="txtcedula" HorizontalAlignment="Left" Height="23" Margin="205,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="81,280,0,0" TextWrapping="Wrap" Text="Teléfono Celular" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="86"/>
         <ComboBox x:Name="cboxcelular" HorizontalAlignment="Left" Margin="205,278,0,0" VerticalAlignment="Top" Width="58" Grid.Column="1" Height="22">
             <ComboBoxItem Content="0414" HorizontalAlignment="Left" Width="38"/>
@@ -28,22 +28,20 @@
             <ComboBoxItem Content="0412" HorizontalAlignment="Left" Width="38"/>
             <ComboBoxItem Content="0424" HorizontalAlignment="Left" Width="38"/>
         </ComboBox>
-        <TextBox x:Name="txtcelular" HorizontalAlignment="Left" Height="23" Margin="268,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Grid.Column="1"/>
+        <TextBox x:Name="txtcelular" HorizontalAlignment="Left" Height="23" Margin="268,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
         <ComboBox x:Name="cboxfijo" HorizontalAlignment="Left" Margin="205,321,0,0" VerticalAlignment="Top" Width="58" Grid.Column="1" Height="22">
             <ComboBoxItem Content="0212" HorizontalAlignment="Left" Width="38"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="95,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.494,3.938" Grid.Column="1" Height="16" Width="71"><Run Text="Teléfono "/><Run Text="Fijo"/></TextBlock>
-        <TextBox x:Name="txtfijo" HorizontalAlignment="Left" Height="23" Margin="268,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Grid.Column="1"/>
+        <TextBox x:Name="txtfijo" HorizontalAlignment="Left" Height="23" Margin="268,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="129,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.494,3.938" Text="Correo" Grid.Column="1" Height="16" Width="37"/>
         <TextBox x:Name="txtcorreo" HorizontalAlignment="Left" Height="23" Margin="205,363,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="106,410,0,0" TextWrapping="Wrap" Text="Especialidad" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="68"/>
         <ComboBox x:Name="cboxespecialidad" HorizontalAlignment="Left" Margin="205,407,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="47,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Height="32" Width="127"><Run Text="Especialidad"/><Run Text=" Secundaria"/><LineBreak/><Run/></TextBlock>
         <ComboBox x:Name="cboxsecundaria" HorizontalAlignment="Left" Margin="205,449,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1" Height="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="527,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="80"><Run Text="Horario Diu"/><Run Text="r"/><Run Text="no"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="411,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.818,0.562" Text="Desde" Grid.Column="1" Height="16" Width="34"/>
         <ComboBox x:Name="cboxdesdedia" HorizontalAlignment="Left" Margin="463,124,0,0" VerticalAlignment="Top" Width="106" Grid.Column="1" Height="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="517,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="106"><Run Text="Horario "/><Run Text="Vespertino"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="411,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Desde" Grid.Column="1" Height="16" Width="34"/>
         <ComboBox x:Name="cboxdesdetarde" HorizontalAlignment="Left" Margin="463,235,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="0.636,0.318" Grid.Column="1" Height="22"/>
         <TextBlock x:Name="txt" HorizontalAlignment="Left" Margin="595,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.818,0.562" Text="Hasta" Grid.Column="1" Height="16" Width="31"/>
@@ -65,6 +63,12 @@
         <CheckBox x:Name="chboxjuevest" Content="Jueves" HorizontalAlignment="Left" Margin="619,198,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.07,0.6" Grid.Column="1" Height="15" Width="54"/>
         <CheckBox x:Name="chboxviernest" Content="Viernes" HorizontalAlignment="Left" Margin="687,198,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.07,0.6" Grid.Column="1" Height="15" Width="58"/>
         <Button x:Name="btninsertar" Grid.ColumnSpan="2" Content="Añadir" HorizontalAlignment="Left" Margin="378,504,0,0" VerticalAlignment="Top" Width="75" Click="btninsertar_Click"/>
+        <CheckBox x:Name="chboxdiurno" Grid.ColumnSpan="2" Content="Horario Diurno" HorizontalAlignment="Left" Margin="527,45,0,0" VerticalAlignment="Top" Click="chboxdiurno_Click"/>
+        <CheckBox x:Name="chboxvespertino" Grid.ColumnSpan="2" Content="Horario Vespertino" HorizontalAlignment="Left" Margin="527,173,0,0" VerticalAlignment="Top" Click="chboxvespertino_Click"/>
+        <CheckBox x:Name="chboxdr" Grid.ColumnSpan="2" Content="Dr." HorizontalAlignment="Left" Margin="117,40,0,0" VerticalAlignment="Top" Click="chboxdr_Click"/>
+        <CheckBox x:Name="chboxdra" Grid.ColumnSpan="2" Content="Dra." HorizontalAlignment="Left" Margin="157,40,0,0" VerticalAlignment="Top" Click="chboxdra_Click"/>
+        <CheckBox x:Name="chboxtec" Grid.ColumnSpan="2" Content="Tec." HorizontalAlignment="Left" Margin="205,40,0,0" VerticalAlignment="Top" Click="chboxtec_Click"/>
+        <CheckBox x:Name="chboxlic" Grid.ColumnSpan="2" Content="Lic." HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top" Click="chboxlic_Click"/>
 
     </Grid>
 </Window>

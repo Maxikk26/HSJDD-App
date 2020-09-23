@@ -108,7 +108,9 @@
     </Compile>
     <Compile Include="Back\Connection.cs" />
     <Compile Include="Back\DeleteBack.cs" />
+    <Compile Include="Back\Horario.cs" />
     <Compile Include="Back\InsertBack.cs" />
+    <Compile Include="Back\Medico.cs" />
     <Compile Include="Front\Delete.xaml.cs">
       <DependentUpon>Delete.xaml</DependentUpon>
     </Compile>
