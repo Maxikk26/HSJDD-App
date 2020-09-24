@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Directorio.Back;
-using Directorio.Front;
+using Directorio.Backend;
+using Directorio.Frontend;
 using Npgsql;
 
 namespace Directorio
@@ -42,7 +42,7 @@ namespace Directorio
             {
                 try
                 {
-                    Connection con = new Connection();
+                    Conexion con = new Conexion();
                     con.start();
                     MainMenu menu = new MainMenu(con);
                     menu.Show();
