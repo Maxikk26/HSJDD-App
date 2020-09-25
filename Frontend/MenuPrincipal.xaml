@@ -10,6 +10,6 @@
         <Button x:Name="btnagregar" Content="Agregar " HorizontalAlignment="Left" Margin="108,129,0,0" VerticalAlignment="Top" Width="134" Height="137" Click="Button_Click_1"/>
         <Button x:Name="btnacutalizar" Content="Actualizar " HorizontalAlignment="Left" Margin="547,129,0,0" VerticalAlignment="Top" Width="134" Height="137"/>
         <Button x:Name="btneliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="761,129,0,89" Width="134" Click="Button_Click"/>
-        <Button x:Name="btnconsultar" Content="Consultar" HorizontalAlignment="Left" Margin="332,129,0,0" VerticalAlignment="Top" Width="134" Height="137"/>
+        <Button x:Name="btnconsultar" Content="Consultar" HorizontalAlignment="Left" Margin="332,129,0,0" VerticalAlignment="Top" Width="134" Height="137" Click="btnconsultar_Click"/>
     </Grid>
 </Window>

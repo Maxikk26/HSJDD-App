@@ -23,16 +23,18 @@ namespace Directorio.Frontend
     public partial class Delete : Window
     {
         Conexion pg;
-        EliminarBack del;
+        Eliminar del;
+        Consultar consult;
         public Delete(Conexion con)
         {
             InitializeComponent();
             this.pg = con;
+            consult = new Consultar(pg);
             try
             {
-                del = new EliminarBack();
-                del.medicos(pg);
-                dgmedico.ItemsSource = del.dt.DefaultView;
+                del = new Eliminar();
+                consult.medicosActivos(pg);
+                dgmedico.ItemsSource = consult.dt.DefaultView;
             }
             catch(Exception ex)
             {
@@ -46,8 +48,8 @@ namespace Directorio.Frontend
             string nombre = txtbuscador.Text;
             if(nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            del.medicoEspecifico(pg, nombre);
-            dgmedico.ItemsSource = del.dt.DefaultView;
+            consult.medicoEspecificoActivo(pg, nombre);
+            dgmedico.ItemsSource = consult.dt.DefaultView;
 
 
         }
@@ -62,8 +64,8 @@ namespace Directorio.Frontend
                 string nombre = txtbuscador.Text;
                 if (nombre != null && nombre != "")
                     nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-                del.medicoEspecifico(pg, nombre);
-                dgmedico.ItemsSource = del.dt.DefaultView;
+                consult.medicoEspecificoActivo(pg, nombre);
+                dgmedico.ItemsSource = consult.dt.DefaultView;
             }
             else
                 MessageBox.Show("No se pudo eliminar el médico", "Error", MessageBoxButton.OK, MessageBoxImage.Information);

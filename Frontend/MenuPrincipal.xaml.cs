@@ -44,5 +44,12 @@ namespace Directorio.Frontend
             insert.Show();
             this.Close();
         }
+
+        private void btnconsultar_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarMenu cons = new ConsultarMenu(pg);
+            cons.Show();
+            this.Close();
+        }
     }
 }
