@@ -22,13 +22,15 @@ namespace Directorio.Frontend
     public partial class AgregarEspecialidad : Window
     {
         Conexion pg;
-        InsertarBack insertar;
+        Insertar insertar;
+        Consultar consult;
         private bool err;
         public AgregarEspecialidad(Conexion con)
         {
             InitializeComponent();
             pg = con;
-            insertar = new InsertarBack(pg);
+            insertar = new Insertar(pg);
+            consult = new Consultar(pg);
         }
 
         private void btnañadir_Click(object sender, RoutedEventArgs e)
@@ -39,10 +41,10 @@ namespace Directorio.Frontend
             if (!err)
             {
                 especialidad = txtespecialidad.Text;
-                insertar.especialidades();
+                consult.especialidades();
                 if (especialidad != null && especialidad != "")
                     especialidad = especialidad.First().ToString().ToUpper() + especialidad.Substring(1);
-                bool contains = insertar.dt.AsEnumerable().Any(row => especialidad == row.Field<String>("especialidad"));
+                bool contains = consult.dt.AsEnumerable().Any(row => especialidad == row.Field<String>("especialidad"));
                 if (contains)
                     MessageBox.Show("La especialidad ya existe", "Directorio Medico", MessageBoxButton.OK, MessageBoxImage.Information);
                 else

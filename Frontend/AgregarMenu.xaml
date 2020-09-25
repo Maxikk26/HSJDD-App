@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="btnmedico" Content="Medico" HorizontalAlignment="Left" Margin="128,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btnmedico_Click"/>
         <Button x:Name="btnconsultorio" Content="Consultorio" HorizontalAlignment="Left" Margin="335,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btnconsultorio_Click"/>
-        <Button x:Name="btnespecialidad" Content="Especialidad" Margin="556,167,123,0" VerticalAlignment="Top" Height="115" Click="btnespecialidad_Click"/>
+        <Button x:Name="btnespecialidad" Content="Especialidad" Margin="551,167,128,0" VerticalAlignment="Top" Height="115" Click="btnespecialidad_Click"/>
 
     </Grid>
 </Window>

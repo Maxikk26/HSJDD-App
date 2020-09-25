@@ -23,8 +23,9 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class AgregarMedico : Window
     {
-        InsertarBack ins;
+        Insertar ins;
         Conexion pg;
+        Consultar consult;
         private List<bool> err = new List<bool>();
         private Medico medico = new Medico();
         private Horario diurno = new Horario();
@@ -48,22 +49,23 @@ namespace Directorio.Frontend
             chboxviernest.IsEnabled = false;
             cboxdesdetarde.IsEnabled = false;
             cboxhastatarde.IsEnabled = false;
-            ins = new InsertarBack(con);
-            ins.especialidades();
-            cboxespecialidad.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("especialidad"));
-            ins.especialidadesSecundarias();
-            cboxsecundaria.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("e_secundaria"));
-            ins.horaDesde(true);
-            cboxdesdedia.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("desde"));
-            ins.horaHasta(true);
-            cboxhastadia.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("hasta"));
-            ins.horaDesde(false);
-            cboxdesdetarde.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("desde"));
-            ins.horaHasta(false);
-            cboxhastatarde.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("hasta"));
-            ins.consultorios();
-            cboxconsultorio.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("numero"));
-            cboxconsultorio2.ItemsSource = ins.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("numero"));
+            ins = new Insertar(con);
+            consult = new Consultar(pg);
+            consult.especialidades();
+            cboxespecialidad.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("especialidad"));
+            consult.especialidadesSecundarias();
+            cboxsecundaria.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("e_secundaria"));
+            consult.horaDesde(true);
+            cboxdesdedia.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("desde"));
+            consult.horaHasta(true);
+            cboxhastadia.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("hasta"));
+            consult.horaDesde(false);
+            cboxdesdetarde.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("desde"));
+            consult.horaHasta(false);
+            cboxhastatarde.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("hasta"));
+            consult.consultorios();
+            cboxconsultorio.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("numero"));
+            cboxconsultorio2.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("numero"));
         }
 
         private void btninsertar_Click(object sender, RoutedEventArgs e)
@@ -160,7 +162,6 @@ namespace Directorio.Frontend
             if (txt.Text != null && txt.Text != "")
             {
                 err.Add(false);
-                //medico.Add(txt.Text);
             }
             else
             {

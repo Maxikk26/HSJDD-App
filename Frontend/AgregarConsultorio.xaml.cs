@@ -21,13 +21,13 @@ namespace Directorio.Frontend
     public partial class AgregarConsultorio : Window
     {
         Conexion pg;
-        InsertarBack insert;
+        Insertar insert;
         private bool err = false;
         public AgregarConsultorio(Conexion con)
         {
             InitializeComponent();
             pg = con;
-            insert = new InsertarBack(pg);
+            insert = new Insertar(pg);
         }
 
         private void btnagregar_Click(object sender, RoutedEventArgs e)

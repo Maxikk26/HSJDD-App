@@ -102,6 +102,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frontend\ConsultarConsultorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ConsultarEspecialidad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ConsultarMedico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ConsultarMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frontend\EliminarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,9 +139,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Backend\Conexion.cs" />
-    <Compile Include="Backend\EliminarBack.cs" />
+    <Compile Include="Backend\Consultar.cs" />
+    <Compile Include="Backend\Eliminar.cs" />
     <Compile Include="Backend\Horario.cs" />
-    <Compile Include="Backend\InsertarBack.cs" />
+    <Compile Include="Backend\Insertar.cs" />
     <Compile Include="Backend\Medico.cs" />
     <Compile Include="Frontend\AgregarConsultorio.xaml.cs">
       <DependentUpon>AgregarConsultorio.xaml</DependentUpon>
@@ -135,6 +152,18 @@
     </Compile>
     <Compile Include="Frontend\AgregarMenu.xaml.cs">
       <DependentUpon>AgregarMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ConsultarConsultorio.xaml.cs">
+      <DependentUpon>ConsultarConsultorio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ConsultarEspecialidad.xaml.cs">
+      <DependentUpon>ConsultarEspecialidad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ConsultarMedico.xaml.cs">
+      <DependentUpon>ConsultarMedico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ConsultarMenu.xaml.cs">
+      <DependentUpon>ConsultarMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\EliminarMedico.xaml.cs">
       <DependentUpon>EliminarMedico.xaml</DependentUpon>

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="Delete" Height="595" Width="800">
-    <Grid Margin="0,0,0,32">
-        <DataGrid x:Name="dgmedico" HorizontalAlignment="Left" Height="310" Margin="41,196,0,0" VerticalAlignment="Top" Width="719"/>
+        Title="Directorio Medico" Height="595" Width="800">
+    <Grid Margin="0,0,0,5">
+        <DataGrid x:Name="dgmedico" HorizontalAlignment="Left" Height="336" Margin="41,196,0,0" VerticalAlignment="Top" Width="719"/>
         <TextBox x:Name="txtbuscador" HorizontalAlignment="Left" Height="23" Margin="218,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtbuscador_TextChanged_1"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="146"><Run Text="Buscar por "/><Run Text="Primer "/><Run Text="N"/><Run Text="ombre:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="50,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.041,-0.438" Width="205" Height="34" FontSize="22"><Run Text="Eliminar M"/><Run Text="é"/><Run Text="dico"/><LineBreak/><Run/></TextBlock>
