@@ -54,10 +54,16 @@ namespace Directorio.Backend
         }
         private void insertarMedico(Medico medico)
         {
-            using (var cmd = new NpgsqlCommand("SELECT insertarMedico(@cedula,@pnombre,@snombre,@papellido,@sapellido)", pg.conn))
+            using (var cmd = new NpgsqlCommand("SELECT insertarMedico(@cedula,@pnombre,@snombre,@papellido,@sapellido,@snombrestat)", pg.conn))
             {
+                string snombrestat = "";
                 cmd.Parameters.AddWithValue("cedula", medico.cedula);
                 cmd.Parameters.AddWithValue("pnombre", medico.pnombre);
+                if (medico.snombre == "")
+                    snombrestat = "false";
+                else
+                    snombrestat = "true";
+                cmd.Parameters.AddWithValue("snombrestat", snombrestat);
                 cmd.Parameters.AddWithValue("snombre", medico.snombre);
                 cmd.Parameters.AddWithValue("papellido", medico.papellido);
                 cmd.Parameters.AddWithValue("sapellido", medico.sapellido);
