@@ -51,5 +51,12 @@ namespace Directorio.Frontend
             cons.Show();
             this.Close();
         }
+
+        private void btnacutalizar_Click(object sender, RoutedEventArgs e)
+        {
+            ActualizarMedico act = new ActualizarMedico(pg);
+            act.Show();
+            this.Close();
+        }
     }
 }

@@ -90,6 +90,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Frontend\ActualizarDatosBasicos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ActualizarMedico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frontend\AgregarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,12 +146,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Backend\Actualizar.cs" />
     <Compile Include="Backend\Conexion.cs" />
     <Compile Include="Backend\Consultar.cs" />
     <Compile Include="Backend\Eliminar.cs" />
     <Compile Include="Backend\Horario.cs" />
     <Compile Include="Backend\Insertar.cs" />
     <Compile Include="Backend\Medico.cs" />
+    <Compile Include="Frontend\ActualizarDatosBasicos.xaml.cs">
+      <DependentUpon>ActualizarDatosBasicos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ActualizarMedico.xaml.cs">
+      <DependentUpon>ActualizarMedico.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frontend\AgregarConsultorio.xaml.cs">
       <DependentUpon>AgregarConsultorio.xaml</DependentUpon>
     </Compile>
