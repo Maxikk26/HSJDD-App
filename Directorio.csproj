@@ -90,11 +90,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Frontend\ActualizarDatosBasicos.xaml">
+    <Page Include="Frontend\ModificarCorreo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ActualizarMedico.xaml">
+    <Page Include="Frontend\ModificarDatosBasicos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ModificarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +142,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frontend\ModificarMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\AgregarTelefono.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,11 +165,14 @@
     <Compile Include="Backend\Horario.cs" />
     <Compile Include="Backend\Insertar.cs" />
     <Compile Include="Backend\Medico.cs" />
-    <Compile Include="Frontend\ActualizarDatosBasicos.xaml.cs">
-      <DependentUpon>ActualizarDatosBasicos.xaml</DependentUpon>
+    <Compile Include="Frontend\ModificarCorreo.xaml.cs">
+      <DependentUpon>ModificarCorreo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ActualizarMedico.xaml.cs">
-      <DependentUpon>ActualizarMedico.xaml</DependentUpon>
+    <Compile Include="Frontend\ModificarDatosBasicos.xaml.cs">
+      <DependentUpon>ModificarDatosBasicos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ModificarMedico.xaml.cs">
+      <DependentUpon>ModificarMedico.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\AgregarConsultorio.xaml.cs">
       <DependentUpon>AgregarConsultorio.xaml</DependentUpon>
@@ -188,6 +203,12 @@
     </Compile>
     <Compile Include="Frontend\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ModificarMenu.xaml.cs">
+      <DependentUpon>ModificarMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\AgregarTelefono.xaml.cs">
+      <DependentUpon>AgregarTelefono.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -24,17 +24,15 @@ namespace Directorio.Frontend
     public partial class AgregarMedico : Window
     {
         Insertar ins;
-        Conexion pg;
         Consultar consult;
         private List<bool> err = new List<bool>();
         private Medico medico = new Medico();
         private Horario diurno = new Horario();
         private Horario vespertino = new Horario();
         private string mensajesError = String.Empty;
-        public AgregarMedico(Conexion con)
+        public AgregarMedico()
         {
             InitializeComponent();
-            pg = con;
             chboxlunesd.IsEnabled = false;
             chboxmartesd.IsEnabled = false;
             chboxmiercolesd.IsEnabled = false;
@@ -49,8 +47,8 @@ namespace Directorio.Frontend
             chboxviernest.IsEnabled = false;
             cboxdesdetarde.IsEnabled = false;
             cboxhastatarde.IsEnabled = false;
-            ins = new Insertar(con);
-            consult = new Consultar(pg);
+            ins = new Insertar();
+            consult = new Consultar();
             consult.especialidades();
             cboxespecialidad.ItemsSource = consult.dt.Rows.Cast<DataRow>().Select(x => x.Field<string>("especialidad"));
             consult.especialidadesSecundarias();

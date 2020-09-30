@@ -20,31 +20,43 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class AgregarMenu : Window
     {
-        Conexion pg;
-        public AgregarMenu(Conexion con)
+        public AgregarMenu()
         {
             InitializeComponent();
-            pg = con;
         }
 
         private void btnmedico_Click(object sender, RoutedEventArgs e)
         {
-            AgregarMedico med = new AgregarMedico(pg);
+            AgregarMedico med = new AgregarMedico();
             med.Show();
             this.Close();
         }
 
         private void btnespecialidad_Click(object sender, RoutedEventArgs e)
         {
-            AgregarEspecialidad esp = new AgregarEspecialidad(pg);
+            AgregarEspecialidad esp = new AgregarEspecialidad();
             esp.Show();
             this.Close();
         }
 
         private void btnconsultorio_Click(object sender, RoutedEventArgs e)
         {
-            AgregarConsultorio con = new AgregarConsultorio(pg);
+            AgregarConsultorio con = new AgregarConsultorio();
             con.Show();
+            this.Close();
+        }
+
+        private void btntelefono_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarTelefono tel = new AgregarTelefono();
+            tel.Show();
+            this.Close();
+        }
+
+        private void btncorreo_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarCorreo correo = new AgregarCorreo();
+            correo.Show();
             this.Close();
         }
     }

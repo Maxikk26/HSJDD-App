@@ -20,20 +20,18 @@ namespace Directorio.Frontend
     /// <summary>
     /// Lógica de interacción para Delete.xaml
     /// </summary>
-    public partial class Delete : Window
+    public partial class EliminarMedico : Window
     {
-        Conexion pg;
         Eliminar del;
         Consultar consult;
-        public Delete(Conexion con)
+        public EliminarMedico()
         {
             InitializeComponent();
-            this.pg = con;
-            consult = new Consultar(pg);
+            consult = new Consultar();
             try
             {
                 del = new Eliminar();
-                consult.medicosActivos(pg);
+                consult.medicosActivos();
                 dgmedico.ItemsSource = consult.dt.DefaultView;
             }
             catch(Exception ex)
@@ -48,7 +46,7 @@ namespace Directorio.Frontend
             string nombre = txtbuscador.Text;
             if(nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.medicoEspecificoActivo(pg, nombre);
+            consult.medicoEspecificoActivo(nombre);
             dgmedico.ItemsSource = consult.dt.DefaultView;
 
 
@@ -57,14 +55,14 @@ namespace Directorio.Frontend
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             int id = Int32.Parse(txtId.Text);
-            bool x = del.eliminar(pg,id);
+            bool x = del.eliminar(id);
             if (x)
             {
                 MessageBox.Show("Médico eliminado satisfactoriamente", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 string nombre = txtbuscador.Text;
                 if (nombre != null && nombre != "")
                     nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-                consult.medicoEspecificoActivo(pg, nombre);
+                consult.medicoEspecificoActivo(nombre);
                 dgmedico.ItemsSource = consult.dt.DefaultView;
             }
             else

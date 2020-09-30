@@ -20,13 +20,11 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class ConsultarMedico : Window
     {
-        Conexion pg;
         Consultar consult;
-        public ConsultarMedico(Conexion con)
+        public ConsultarMedico()
         {
             InitializeComponent();
-            pg = con;
-            consult = new Consultar(pg);
+            consult = new Consultar();
             consult.medicos();
             dtmedico.ItemsSource = consult.dt.DefaultView;
         }
@@ -36,7 +34,7 @@ namespace Directorio.Frontend
             string nombre = txtnombre.Text;
             if (nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.medicoEspecifico(pg, nombre);
+            consult.medicoEspecifico(nombre);
             dtmedico.ItemsSource = consult.dt.DefaultView;
         }
     }

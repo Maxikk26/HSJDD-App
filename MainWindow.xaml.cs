@@ -44,7 +44,7 @@ namespace Directorio
                 {
                     Conexion con = new Conexion();
                     con.start();
-                    MainMenu menu = new MainMenu(con);
+                    MainMenu menu = new MainMenu();
                     menu.Show();
                     this.Close();
                 }

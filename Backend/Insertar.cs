@@ -10,42 +10,47 @@ namespace Directorio.Backend
 {
     public class Insertar
     {
-        NpgsqlDataAdapter da;
         public DataSet ds = new DataSet();
         public DataTable dt = new DataTable();
         private List<bool> insert = new List<bool>();
         private int x = 0;
         Conexion pg;
-        public Insertar(Conexion con)
+        public Insertar()
         {
-            pg = con;
+            pg = new Conexion();
         }
 
         public string crearInsert(Medico medico, Horario diurno, Horario vespertino)
         {
             try
             {
-                insertarMedico(medico);
-                switch (x)
+                if (pg.start())
                 {
-                    case 1:
-                        insert.Add(true);
-                        break;
-                    case 2:
-                        return "Medico actualmente registrado, cambiando estatus a 'Activo'";
-                    case 3:
-                        return "Meidco ya existe y activo en el sistema";
+                    insertarMedico(medico);
+                    switch (x)
+                    {
+                        case 1:
+                            insert.Add(true);
+                            break;
+                        case 2:
+                            return "Medico actualmente registrado, cambiando estatus a 'Activo'";
+                        case 3:
+                            return "Meidco ya existe y activo en el sistema";
+                    }
+                    insertarTelefono(medico);
+                    insertarCorreo(medico);
+                    insertarMedicoConsultorio(medico);
+                    insertarPertenecia(medico);
+                    validarAsistencia(medico, diurno);
+                    validarAsistencia(medico, vespertino);
+                    pg.stop();
+                    if (insert.Contains(false))
+                        return "Error, revise los campos ingresados";
+                    else
+                        return "Medico registrado satisfactoriamente!";
                 }
-                insertarTelefono(medico);
-                insertarCorreo(medico);
-                insertarMedicoConsultorio(medico);
-                insertarPertenecia(medico);
-                validarAsistencia(medico,diurno);
-                validarAsistencia(medico,vespertino);
-                if (insert.Contains(false))
-                    return "Error, revise los campos ingresados";
                 else
-                    return "Medico registrado satisfactoriamente!";
+                    return "Error en la conxion de la base de datos";
             }
             catch (Exception ex)
             {
@@ -78,6 +83,7 @@ namespace Directorio.Backend
                 cmd.Parameters.AddWithValue("cedula", medico.cedula);
                 cmd.Parameters.AddWithValue("celular", celular);
                 insert.Add((bool)cmd.ExecuteScalar());
+
             }
             using (var cmd = new NpgsqlCommand("SELECT insertarTelefono(@cedula,@fijo)", pg.conn))
             {
@@ -86,6 +92,8 @@ namespace Directorio.Backend
                 cmd.Parameters.AddWithValue("fijo", fijo);
                 insert.Add((bool)cmd.ExecuteScalar());
             }
+
+            
         }
 
         private void insertarCorreo(Medico medico)
@@ -96,6 +104,30 @@ namespace Directorio.Backend
                 cmd.Parameters.AddWithValue("correo", medico.correo);
                 insert.Add((bool)cmd.ExecuteScalar());
             }
+
+        }
+        public string crearInsertCorreo(string id, string correo)
+        {
+            if (pg.start())
+                using (var cmd = new NpgsqlCommand("SELECT insertarCorreoID(@id,@corre)", pg.conn))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("correo", correo);
+                    bool x = (bool)cmd.ExecuteScalar();
+                    if (x)
+                    {
+                        pg.stop();
+                        return "Correo agregado correctamente";
+                    }
+                    else
+                    {
+                        pg.stop();
+                        return "Error, intentelo nuevamente";
+                    }
+
+                }
+            else
+                return "Error en la conxion de la base de datos";
         }
         private void insertarMedicoConsultorio(Medico medico)
         {
@@ -114,7 +146,8 @@ namespace Directorio.Backend
                     insert.Add((bool)cmd.ExecuteScalar());
                 }
             }
-           
+
+
         }
 
         private void insertarPertenecia(Medico medico)
@@ -136,6 +169,7 @@ namespace Directorio.Backend
                     cmd.Parameters.AddWithValue("especialidad", medico.especialidad);
                     insert.Add((bool)cmd.ExecuteScalar());
                 }
+
         }
 
         public string crearInsertEspecialidad(string especialidad)
@@ -143,7 +177,7 @@ namespace Directorio.Backend
             bool x = false;
             using (var cmd = new NpgsqlCommand("SELECT insertarEspecialidad(@especialidad)", pg.conn))
             {
-                cmd.Parameters.AddWithValue("especialidad",especialidad);
+                cmd.Parameters.AddWithValue("especialidad", especialidad);
                 x = (bool)cmd.ExecuteScalar();
                 if (x)
                 {
@@ -151,15 +185,23 @@ namespace Directorio.Backend
                     {
                         cmad.Parameters.AddWithValue("especialidad", especialidad);
                         x = (bool)cmad.ExecuteScalar();
-                        if(x)
+                        if (x)
+                        {
                             return "Especialidad registrada satisfactoriamente";
+                        }
                         else
+                        {
                             return "Error al registrar la especialidad, intente de nuevo";
+                        }
                     }
                 }
                 else
+                {
                     return "Error al registrar la especialidad, intente de nuevo";
+                }
             }
+
+
         }
 
         public string crearInsertConsultorio(string consultorio, string piso)
@@ -174,10 +216,40 @@ namespace Directorio.Backend
                     cmd.Parameters.AddWithValue("piso", piso);
                     bool x = (bool)cmd.ExecuteScalar();
                     if (x)
+                    {
                         return "Consultorio registrado satisfactoriamente";
+                    }
                     else
+                    {
                         return "Se ha generado un error al registrar, intentelo de nuevo";
+                    }
                 }
+
+
+        }
+
+        public string crearInsertTelefono(string id, string numero)
+        {
+            if (pg.start())
+                using (var cmd = new NpgsqlCommand("SELECT insertarTelefonoID(@id,@numero)", pg.conn))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("numero", numero);
+                    bool x = (bool)cmd.ExecuteScalar();
+                    if (x)
+                    {
+                        pg.stop();
+                        return "Telefono agregado correctamente";
+                    }
+                    else
+                    {
+                        pg.stop()
+                        return "Error, intentelo nuevamente";
+                    }
+
+                }
+            else
+                return "Error en la conxion de la base de datos";
         }
 
         private bool validarConsultorio(string con)

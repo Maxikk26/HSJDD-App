@@ -20,13 +20,11 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class ConsultarConsultorio : Window
     {
-        Conexion pg;
         Consultar consult;
-        public ConsultarConsultorio(Conexion con)
+        public ConsultarConsultorio()
         {
             InitializeComponent();
-            pg = con;
-            consult = new Consultar(pg);
+            consult = new Consultar();
             consult.todosConsultorios();
             dgconsultorio.ItemsSource = consult.dt.DefaultView;
         }

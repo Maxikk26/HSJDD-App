@@ -10,24 +10,27 @@ namespace Directorio.Backend
 {
     class Eliminar
     {
-        NpgsqlDataAdapter da;
+        Conexion pg;
         public DataSet ds = new DataSet();
         public DataTable dt = new DataTable();
         public Eliminar()
         {
-
+            pg = new Conexion();
         }
 
-        public bool eliminar(Conexion con, int id)
+        public bool eliminar(int id)
         {
             try
             {
-                using (var cmd = new NpgsqlCommand("SELECT eliminarMedicoId(@p)", con.conn))
-                {
-                    cmd.Parameters.AddWithValue("p", id);
-                    bool res = (bool)cmd.ExecuteScalar();
-                    return res;
-                }
+                if (pg.start())
+                    using (var cmd = new NpgsqlCommand("SELECT eliminarMedicoId(@p)", pg.conn))
+                    {
+                        cmd.Parameters.AddWithValue("p", id);
+                        bool res = (bool)cmd.ExecuteScalar();
+                        return res;
+                    }
+                else
+                    return false;
                 
             }
             catch(Exception ex)

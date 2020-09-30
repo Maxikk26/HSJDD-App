@@ -20,30 +20,28 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class ConsultarMenu : Window
     {
-        Conexion pg;
-        public ConsultarMenu(Conexion con)
+        public ConsultarMenu()
         {
             InitializeComponent();
-            pg = con;
         }
 
         private void btnmedico_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarMedico med = new ConsultarMedico(pg);
+            ConsultarMedico med = new ConsultarMedico();
             med.Show();
             this.Close();
         }
 
         private void btnconsultorio_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarConsultorio cons = new ConsultarConsultorio(pg);
+            ConsultarConsultorio cons = new ConsultarConsultorio();
             cons.Show();
             this.Close();
         }
 
         private void btnespecialidades_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarEspecialidad esp = new ConsultarEspecialidad(pg);
+            ConsultarEspecialidad esp = new ConsultarEspecialidad();
             esp.Show();
             this.Close();
         }

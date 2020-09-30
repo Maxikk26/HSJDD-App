@@ -20,14 +20,12 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class AgregarConsultorio : Window
     {
-        Conexion pg;
         Insertar insert;
         private bool err = false;
-        public AgregarConsultorio(Conexion con)
+        public AgregarConsultorio()
         {
             InitializeComponent();
-            pg = con;
-            insert = new Insertar(pg);
+            insert = new Insertar();
         }
 
         private void btnagregar_Click(object sender, RoutedEventArgs e)

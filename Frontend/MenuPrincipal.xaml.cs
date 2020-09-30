@@ -22,39 +22,37 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class MainMenu : Window
     {
-        Conexion pg;
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
-        public MainMenu(Conexion con)
+        public MainMenu()
         {
             InitializeComponent();
-            this.pg = con;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Delete delete = new Delete(pg);
+            EliminarMedico delete = new EliminarMedico();
             delete.Show();
             this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AgregarMenu insert = new AgregarMenu(pg);
+            AgregarMenu insert = new AgregarMenu();
             insert.Show();
             this.Close();
         }
 
         private void btnconsultar_Click(object sender, RoutedEventArgs e)
         {
-            ConsultarMenu cons = new ConsultarMenu(pg);
+            ConsultarMenu cons = new ConsultarMenu();
             cons.Show();
             this.Close();
         }
 
         private void btnacutalizar_Click(object sender, RoutedEventArgs e)
         {
-            ActualizarMedico act = new ActualizarMedico(pg);
+            ModificarMenu act = new ModificarMenu();
             act.Show();
             this.Close();
         }

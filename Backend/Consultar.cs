@@ -14,16 +14,21 @@ namespace Directorio.Backend
         NpgsqlDataAdapter da;
         public DataSet ds = new DataSet();
         public DataTable dt = new DataTable();
-        public Consultar(Conexion con)
+        public Consultar()
         {
-            pg = con;
+            pg = new Conexion();
         }
 
         private void ejecutar(string sql)
         {
-            da = new NpgsqlDataAdapter(sql, pg.conn);
-            dt.Reset();
-            da.Fill(dt);
+            if (pg.start())
+            {
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                dt.Reset();
+                da.Fill(dt);
+                pg.stop();
+            }
+            
         }
 
         public void medicos()
@@ -31,54 +36,82 @@ namespace Directorio.Backend
             string sql = "SELECT id_medico AS id, cedula AS cedula, p_nombre, s_nombre, p_apellido, s_apellido, estatus AS activo FROM medico ORDER BY id_medico";
             ejecutar(sql);
         }
-
-        public void medicosActivos(Conexion con)
+        public void medicosActivos()
         {
-            string sql = "SELECT * FROM medico WHERE estatus = true ORDER BY id_medico";
-            da = new NpgsqlDataAdapter(sql, con.conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
+            if (pg.start())
+            {
+                string sql = "SELECT * FROM medico WHERE estatus = true ORDER BY id_medico";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
 
         }
-        public void medicoEspecifico(Conexion con, string nombre)
+        public void medicoEspecifico(string nombre)
         {
-            string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' ORDER BY id_medico";
-            da = new NpgsqlDataAdapter(sql, con.conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
+            if (pg.start())
+            {
+                string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' ORDER BY id_medico";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
         }
-
-        public void medicoEspecificoActivo(Conexion con, string nombre)
+        public void medicoEspecificoActivo(string nombre)
         {
-            string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' AND estatus = true ORDER BY id_medico";
-            da = new NpgsqlDataAdapter(sql, con.conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
+            if (pg.start())
+            {
+                string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' AND estatus = true ORDER BY id_medico";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
+        }
+        public void correos()
+        {
+            string sql = "SELECT ME.id_medico, ME.p_nombre, ME.p_apellido, ME.s_apellido, traercorreos(ME.id_medico) FROM medico ME";
+            ejecutar(sql);
+        }
+        public void telefonos(string nombre)
+        {
+            if (pg.start())
+            {
+                string sql = "SELECT ME.id_medico,TE.telefono,ME.p_nombre,ME.p_apellido,ME.s_apellido FROM medico ME, telefono TE WHERE ME.id_medico = TE.medico_id AND ME.p_nombre LIKE '"+nombre+"%'";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
         }
         public void especialidades()
         {
             string sql = "select * from especialidad ORDER BY especialidad";
             ejecutar(sql);
         }
-
         public void especialidadEspecifica(string nombre)
         {
-            string sql = "SELECT * FROM especialidad WHERE especialidad LIKE '" + nombre + "%' ";
-            da = new NpgsqlDataAdapter(sql, pg.conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
+            if (pg.start())
+            {
+                string sql = "SELECT * FROM especialidad WHERE especialidad LIKE '" + nombre + "%' ";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
         }
-
         public void especialidadesSecundarias()
         {
             string sql = "SELECT DISTINCT e_secundaria FROM pertenencia";
             ejecutar(sql);
         }
-
         public void horaDesde(bool dia)
         {
             if (dia)
@@ -92,7 +125,6 @@ namespace Directorio.Backend
                 ejecutar(sql);
             }
         }
-
         public void horaHasta(bool dia)
         {
             if (dia)
@@ -106,26 +138,27 @@ namespace Directorio.Backend
                 ejecutar(sql);
             }
         }
-
         public void consultorios()
         {
             string sql = "SELECT numero FROM consultorio";
             ejecutar(sql);
         }
-
         public void todosConsultorios()
         {
             string sql = "SELECT CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso";
             ejecutar(sql);
         }
-
         public void consultorioEspecifico(string nombre)
         {
-            string sql = "SELECT CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso AND CO.numero LIKE'" + nombre + "%' ";
-            da = new NpgsqlDataAdapter(sql, pg.conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
+            if (pg.start())
+            {
+                string sql = "SELECT CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso AND CO.numero LIKE'" + nombre + "%' ";
+                da = new NpgsqlDataAdapter(sql, pg.conn);
+                ds.Reset();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                pg.stop();
+            }
         }
 
     }

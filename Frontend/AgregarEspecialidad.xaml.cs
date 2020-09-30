@@ -21,16 +21,14 @@ namespace Directorio.Frontend
     /// </summary>
     public partial class AgregarEspecialidad : Window
     {
-        Conexion pg;
         Insertar insertar;
         Consultar consult;
         private bool err;
-        public AgregarEspecialidad(Conexion con)
+        public AgregarEspecialidad()
         {
             InitializeComponent();
-            pg = con;
-            insertar = new Insertar(pg);
-            consult = new Consultar(pg);
+            insertar = new Insertar();
+            consult = new Consultar();
         }
 
         private void btnañadir_Click(object sender, RoutedEventArgs e)
