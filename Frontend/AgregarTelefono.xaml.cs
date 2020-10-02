@@ -133,7 +133,7 @@ namespace Directorio.Frontend
             string nombre = txtnombre.Text;
             if (nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.telefonos(nombre);
+            consult.telefonos(nombre,true);
             dgtelefono.ItemsSource = consult.dt.DefaultView;
         }
     }
