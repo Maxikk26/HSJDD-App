@@ -31,7 +31,7 @@ namespace Directorio.Frontend
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            EliminarMedico delete = new EliminarMedico();
+            EliminarMenu delete = new EliminarMenu();
             delete.Show();
             this.Close();
         }
