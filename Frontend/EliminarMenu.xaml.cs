@@ -33,12 +33,16 @@ namespace Directorio.Frontend
 
         private void btntelefono_Click(object sender, RoutedEventArgs e)
         {
-
+            EliminarTelefono tel = new EliminarTelefono();
+            tel.Show();
+            this.Close();
         }
 
         private void btncorreo_Click(object sender, RoutedEventArgs e)
         {
-
+            EliminarCorreo cor = new EliminarCorreo();
+            cor.Show();
+            this.Close();
         }
     }
 }

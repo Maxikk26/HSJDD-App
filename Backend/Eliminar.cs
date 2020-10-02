@@ -27,6 +27,7 @@ namespace Directorio.Backend
                     {
                         cmd.Parameters.AddWithValue("p", id);
                         bool res = (bool)cmd.ExecuteScalar();
+                        pg.stop();
                         return res;
                     }
                 else
@@ -40,6 +41,54 @@ namespace Directorio.Backend
             
         }
 
+        public string eliminarCorreoID(string id)
+        {
+            if (pg.start())
+            {
+                using (var cmd = new NpgsqlCommand("SELECT eliminarCorreoID(@idcorreo)", pg.conn))
+                {
+                    cmd.Parameters.AddWithValue("idcorreo", id);
+                    bool x = (bool)cmd.ExecuteScalar();
+                    if (x)
+                    {
+                        pg.stop();
+                        return "Correo elimiando satisfactoriamente";
+                    }
+                    else
+                    {
+                        pg.stop();
+                        return "Se ha generado un error al eliminar, revise los datos ingresados";
+                    }
+                }
+            }
+            else
+                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+
+        }
+
+        public string eliminarTelefonoID(string id)
+        {
+            if (pg.start())
+            {
+                using (var cmd = new NpgsqlCommand("SELECT eliminarTelefonoID(@id)", pg.conn))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    bool x = (bool)cmd.ExecuteScalar();
+                    if (x)
+                    {
+                        pg.stop();
+                        return "Teléfono elimiando satisfactoriamente";
+                    }
+                    else
+                    {
+                        pg.stop();
+                        return "Se ha generado un error al eliminar, revise los datos ingresados";
+                    }
+                }
+            }
+            else
+                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+        }
 
     }
 }
