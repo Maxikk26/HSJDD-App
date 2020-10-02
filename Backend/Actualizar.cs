@@ -78,7 +78,28 @@ namespace Directorio.Backend
                         return "Error, intentelo de nuevo";
                 }
             else
-                return "Error en la conexión con la base de datos";
+                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+
+        }
+
+        public string actualizarConsultorio(string id, string numero, string piso)
+        {
+            if (pg.start())
+            {
+                using (var cmd = new NpgsqlCommand("SELECT actualizarConsultorio(@id,@numero,@piso)", pg.conn))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("numero", numero);
+                    cmd.Parameters.AddWithValue("piso", piso);
+                    bool x = (bool)cmd.ExecuteScalar();
+                    if (x)
+                        return "Actualizado satisfactoriamente";
+                    else
+                        return "Error, intentelo de nuevo";
+                }
+            }
+            else
+                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
 
         }
     }

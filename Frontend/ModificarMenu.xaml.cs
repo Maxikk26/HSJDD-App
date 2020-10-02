@@ -34,7 +34,9 @@ namespace Directorio.Frontend
 
         private void btnconsultorio_Click(object sender, RoutedEventArgs e)
         {
-
+            ModificarConsultorio con = new ModificarConsultorio();
+            con.Show();
+            this.Close();
         }
 
         private void btnespecialidad_Click(object sender, RoutedEventArgs e)

@@ -90,11 +90,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Frontend\ModificarCorreo.xaml">
+    <Page Include="Frontend\AgregarCorreo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\EliminarCorreo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\EliminarMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\EliminarTelefono.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frontend\ModificarDatosBasicos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\ModificarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,11 +181,23 @@
     <Compile Include="Backend\Horario.cs" />
     <Compile Include="Backend\Insertar.cs" />
     <Compile Include="Backend\Medico.cs" />
-    <Compile Include="Frontend\ModificarCorreo.xaml.cs">
-      <DependentUpon>ModificarCorreo.xaml</DependentUpon>
+    <Compile Include="Frontend\AgregarCorreo.xaml.cs">
+      <DependentUpon>AgregarCorreo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\EliminarCorreo.xaml.cs">
+      <DependentUpon>EliminarCorreo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\EliminarMenu.xaml.cs">
+      <DependentUpon>EliminarMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\EliminarTelefono.xaml.cs">
+      <DependentUpon>EliminarTelefono.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\ModificarDatosBasicos.xaml.cs">
       <DependentUpon>ModificarDatosBasicos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\ModificarConsultorio.xaml.cs">
+      <DependentUpon>ModificarConsultorio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\ModificarMedico.xaml.cs">
       <DependentUpon>ModificarMedico.xaml</DependentUpon>
@@ -241,6 +269,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frontend\Agregar\" />
+    <Folder Include="Frontend\Consultar\" />
+    <Folder Include="Frontend\Eliminar\" />
+    <Folder Include="Frontend\Modificar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
