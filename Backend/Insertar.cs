@@ -206,24 +206,31 @@ namespace Directorio.Backend
 
         public string crearInsertConsultorio(string consultorio, string piso)
         {
-            bool exists = validarConsultorio(consultorio);
-            if (!exists)
-                return "Ya existe el consultorio";
+            if (pg.start())
+            {
+                bool exists = validarConsultorio(consultorio);
+                if (!exists)
+                    return "Ya existe el consultorio";
+                else
+                    using (var cmd = new NpgsqlCommand("SELECT insertarConsultorio(@consultorio,@piso)", pg.conn))
+                    {
+                        cmd.Parameters.AddWithValue("consultorio", consultorio);
+                        cmd.Parameters.AddWithValue("piso", piso);
+                        bool x = (bool)cmd.ExecuteScalar();
+                        if (x)
+                        {
+                            pg.stop();
+                            return "Consultorio registrado satisfactoriamente";
+                        }
+                        else
+                        {
+                            pg.stop();
+                            return "Se ha generado un error al registrar, intentelo de nuevo";
+                        }
+                    }
+            }
             else
-                using (var cmd = new NpgsqlCommand("SELECT insertarConsultorio(@consultorio,@piso)", pg.conn))
-                {
-                    cmd.Parameters.AddWithValue("consultorio", consultorio);
-                    cmd.Parameters.AddWithValue("piso", piso);
-                    bool x = (bool)cmd.ExecuteScalar();
-                    if (x)
-                    {
-                        return "Consultorio registrado satisfactoriamente";
-                    }
-                    else
-                    {
-                        return "Se ha generado un error al registrar, intentelo de nuevo";
-                    }
-                }
+                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
 
 
         }
@@ -243,7 +250,7 @@ namespace Directorio.Backend
                     }
                     else
                     {
-                        pg.stop()
+                        pg.stop();
                         return "Error, intentelo nuevamente";
                     }
 
