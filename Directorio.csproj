@@ -90,79 +90,83 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Frontend\AgregarCorreo.xaml">
+    <Page Include="Frontend\Agregar\AgregarCorreo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\EliminarCorreo.xaml">
+    <Page Include="Frontend\Eliminar\EliminarCorreo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\EliminarMenu.xaml">
+    <Page Include="Frontend\Menu\EliminarMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\EliminarTelefono.xaml">
+    <Page Include="Frontend\Eliminar\EliminarTelefono.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ModificarDatosBasicos.xaml">
+    <Page Include="Frontend\Modificar\ModificarDatosBasicos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ModificarConsultorio.xaml">
+    <Page Include="Frontend\Modificar\ModificarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ModificarMedico.xaml">
+    <Page Include="Frontend\Modificar\ModificarEspecialidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\AgregarConsultorio.xaml">
+    <Page Include="Frontend\Modificar\ModificarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\AgregarEspecialidad.xaml">
+    <Page Include="Frontend\Agregar\AgregarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\AgregarMenu.xaml">
+    <Page Include="Frontend\Agregar\AgregarEspecialidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ConsultarConsultorio.xaml">
+    <Page Include="Frontend\Menu\AgregarMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ConsultarEspecialidad.xaml">
+    <Page Include="Frontend\Consultar\ConsultarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ConsultarMedico.xaml">
+    <Page Include="Frontend\Consultar\ConsultarEspecialidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ConsultarMenu.xaml">
+    <Page Include="Frontend\Consultar\ConsultarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\EliminarMedico.xaml">
+    <Page Include="Frontend\Menu\ConsultarMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\AgregarMedico.xaml">
+    <Page Include="Frontend\Eliminar\EliminarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\MenuPrincipal.xaml">
+    <Page Include="Frontend\Agregar\AgregarMedico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\ModificarMenu.xaml">
+    <Page Include="Frontend\Menu\MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\AgregarTelefono.xaml">
+    <Page Include="Frontend\Menu\ModificarMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Agregar\AgregarTelefono.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,61 +185,64 @@
     <Compile Include="Backend\Horario.cs" />
     <Compile Include="Backend\Insertar.cs" />
     <Compile Include="Backend\Medico.cs" />
-    <Compile Include="Frontend\AgregarCorreo.xaml.cs">
+    <Compile Include="Frontend\Agregar\AgregarCorreo.xaml.cs">
       <DependentUpon>AgregarCorreo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\EliminarCorreo.xaml.cs">
+    <Compile Include="Frontend\Eliminar\EliminarCorreo.xaml.cs">
       <DependentUpon>EliminarCorreo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\EliminarMenu.xaml.cs">
+    <Compile Include="Frontend\Menu\EliminarMenu.xaml.cs">
       <DependentUpon>EliminarMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\EliminarTelefono.xaml.cs">
+    <Compile Include="Frontend\Eliminar\EliminarTelefono.xaml.cs">
       <DependentUpon>EliminarTelefono.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ModificarDatosBasicos.xaml.cs">
+    <Compile Include="Frontend\Modificar\ModificarDatosBasicos.xaml.cs">
       <DependentUpon>ModificarDatosBasicos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ModificarConsultorio.xaml.cs">
+    <Compile Include="Frontend\Modificar\ModificarConsultorio.xaml.cs">
       <DependentUpon>ModificarConsultorio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ModificarMedico.xaml.cs">
+    <Compile Include="Frontend\Modificar\ModificarEspecialidad.xaml.cs">
+      <DependentUpon>ModificarEspecialidad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Modificar\ModificarMedico.xaml.cs">
       <DependentUpon>ModificarMedico.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\AgregarConsultorio.xaml.cs">
+    <Compile Include="Frontend\Agregar\AgregarConsultorio.xaml.cs">
       <DependentUpon>AgregarConsultorio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\AgregarEspecialidad.xaml.cs">
+    <Compile Include="Frontend\Agregar\AgregarEspecialidad.xaml.cs">
       <DependentUpon>AgregarEspecialidad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\AgregarMenu.xaml.cs">
+    <Compile Include="Frontend\Menu\AgregarMenu.xaml.cs">
       <DependentUpon>AgregarMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ConsultarConsultorio.xaml.cs">
+    <Compile Include="Frontend\Consultar\ConsultarConsultorio.xaml.cs">
       <DependentUpon>ConsultarConsultorio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ConsultarEspecialidad.xaml.cs">
+    <Compile Include="Frontend\Consultar\ConsultarEspecialidad.xaml.cs">
       <DependentUpon>ConsultarEspecialidad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ConsultarMedico.xaml.cs">
+    <Compile Include="Frontend\Consultar\ConsultarMedico.xaml.cs">
       <DependentUpon>ConsultarMedico.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ConsultarMenu.xaml.cs">
+    <Compile Include="Frontend\Menu\ConsultarMenu.xaml.cs">
       <DependentUpon>ConsultarMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\EliminarMedico.xaml.cs">
+    <Compile Include="Frontend\Eliminar\EliminarMedico.xaml.cs">
       <DependentUpon>EliminarMedico.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\AgregarMedico.xaml.cs">
+    <Compile Include="Frontend\Agregar\AgregarMedico.xaml.cs">
       <DependentUpon>AgregarMedico.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\MenuPrincipal.xaml.cs">
+    <Compile Include="Frontend\Menu\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\ModificarMenu.xaml.cs">
+    <Compile Include="Frontend\Menu\ModificarMenu.xaml.cs">
       <DependentUpon>ModificarMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\AgregarTelefono.xaml.cs">
+    <Compile Include="Frontend\Agregar\AgregarTelefono.xaml.cs">
       <DependentUpon>AgregarTelefono.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -270,11 +277,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frontend\Agregar\" />
-    <Folder Include="Frontend\Consultar\" />
-    <Folder Include="Frontend\Eliminar\" />
-    <Folder Include="Frontend\Modificar\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

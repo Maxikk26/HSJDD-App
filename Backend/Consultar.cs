@@ -21,148 +21,261 @@ namespace Directorio.Backend
 
         private void ejecutar(string sql)
         {
-            if (pg.start())
+            try
             {
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                dt.Reset();
-                da.Fill(dt);
-                pg.stop();
+                if (pg.start())
+                {
+                    da = new NpgsqlDataAdapter(sql, pg.conn);
+                    dt.Reset();
+                    da.Fill(dt);
+                    pg.stop();
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
             
         }
 
-        public void medicos()
+        private void ejecutarSimple(string sql)
         {
-            string sql = "SELECT id_medico AS id, cedula AS cedula, p_nombre, s_nombre, p_apellido, s_apellido, estatus AS activo FROM medico ORDER BY id_medico";
-            ejecutar(sql);
-        }
-        public void medicosActivos()
-        {
-            if (pg.start())
+            try
             {
-                string sql = "SELECT * FROM medico WHERE estatus = true ORDER BY id_medico";
                 da = new NpgsqlDataAdapter(sql, pg.conn);
                 ds.Reset();
                 da.Fill(ds);
                 dt = ds.Tables[0];
                 pg.stop();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void medicos()
+        {
+            try
+            {
+                string sql = "SELECT id_medico AS id, cedula AS cedula, p_nombre, s_nombre, p_apellido, s_apellido, estatus AS activo FROM medico ORDER BY id_medico";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void medicosActivos()
+        {
+            try
+            {
+                if (pg.start())
+                {
+                    string sql = "SELECT * FROM medico WHERE estatus = true ORDER BY id_medico";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
 
         }
         public void medicoEspecifico(string nombre)
         {
-            if (pg.start())
+            try
             {
-                string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' ORDER BY id_medico";
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                pg.stop();
+                if (pg.start())
+                {
+                    string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' ORDER BY id_medico";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         public void medicoEspecificoActivo(string nombre)
         {
-            if (pg.start())
+            try
             {
-                string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' AND estatus = true ORDER BY id_medico";
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                pg.stop();
+                if (pg.start())
+                {
+                    string sql = "SELECT * FROM medico WHERE p_nombre LIKE '" + nombre + "%' AND estatus = true ORDER BY id_medico";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         public void correos()
         {
-            string sql = "SELECT ME.id_medico, ME.p_nombre, ME.p_apellido, ME.s_apellido, traercorreos(ME.id_medico) FROM medico ME";
-            ejecutar(sql);
+            try
+            {
+                string sql = "SELECT ME.id_medico, ME.p_nombre, ME.p_apellido, ME.s_apellido, traercorreos(ME.id_medico) FROM medico ME";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void telefonos(string nombre,bool medico)
         {
-            if (pg.start())
+            try
             {
-                string sql;
-                if(medico)
-                    sql = "SELECT ME.id_medico,TE.telefono,ME.p_nombre,ME.p_apellido,ME.s_apellido FROM medico ME, telefono TE WHERE ME.id_medico = TE.medico_id AND ME.p_nombre LIKE '"+nombre+"%'";
-                else
-                    sql = "SELECT TE.id_telefono,TE.telefono,ME.p_nombre,ME.p_apellido,ME.s_apellido FROM medico ME, telefono TE WHERE ME.id_medico = TE.medico_id AND ME.p_nombre LIKE '" + nombre + "%'";
+                if (pg.start())
+                {
+                    string sql;
+                    if(medico)
+                        sql = "SELECT ME.id_medico,TE.telefono,ME.p_nombre,ME.p_apellido,ME.s_apellido FROM medico ME, telefono TE WHERE ME.id_medico = TE.medico_id AND ME.p_nombre LIKE '"+nombre+"%'";
+                    else
+                        sql = "SELECT TE.id_telefono,TE.telefono,ME.p_nombre,ME.p_apellido,ME.s_apellido FROM medico ME, telefono TE WHERE ME.id_medico = TE.medico_id AND ME.p_nombre LIKE '" + nombre + "%'";
 
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                pg.stop();
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         public void especialidades()
         {
-            string sql = "select * from especialidad ORDER BY especialidad";
-            ejecutar(sql);
+            try
+            {
+                string sql = "select * from especialidad ORDER BY especialidad";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void especialidadEspecifica(string nombre)
         {
-            if (pg.start())
+            try
             {
-                string sql = "SELECT * FROM especialidad WHERE especialidad LIKE '" + nombre + "%' ";
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                pg.stop();
+                if (pg.start())
+                {
+                    string sql = "SELECT * FROM especialidad WHERE especialidad LIKE '" + nombre + "%' ORDER BY id_especialidad";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         public void especialidadesSecundarias()
         {
-            string sql = "SELECT DISTINCT e_secundaria FROM pertenencia";
-            ejecutar(sql);
+            try
+            {
+                string sql = "SELECT DISTINCT e_secundaria FROM pertenencia";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void horaDesde(bool dia)
         {
-            if (dia)
+            try
             {
-                string sql = "SELECT DISTINCT to_char(desde,'HH12:MI') AS desde FROM hora WHERE desde <> '01:00' ORDER BY desde ASC";
-                ejecutar(sql);
+                if (dia)
+                {
+                    string sql = "SELECT DISTINCT to_char(desde,'HH12:MI') AS desde FROM hora WHERE desde <> '01:00' ORDER BY desde ASC";
+                    ejecutar(sql);
+                }
+                else
+                {
+                    string sql = "SELECT DISTINCT to_char(desde,'HH12:MI') AS desde FROM hora WHERE desde >= '01:00' AND desde <= '05:00' ORDER BY desde ASC";
+                    ejecutar(sql);
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                string sql = "SELECT DISTINCT to_char(desde,'HH12:MI') AS desde FROM hora WHERE desde >= '01:00' AND desde <= '05:00' ORDER BY desde ASC";
-                ejecutar(sql);
+                throw ex;
             }
         }
         public void horaHasta(bool dia)
         {
-            if (dia)
+            try
             {
-                string sql = "SELECT DISTINCT to_char(hasta,'HH12:MI') AS hasta FROM hora WHERE desde <> '01:00' ORDER BY hasta ASC";
-                ejecutar(sql);
+                if (dia)
+                {
+                    string sql = "SELECT DISTINCT to_char(hasta,'HH12:MI') AS hasta FROM hora WHERE desde <> '01:00' ORDER BY hasta ASC";
+                    ejecutar(sql);
+                }
+                else
+                {
+                    string sql = "SELECT DISTINCT to_char(hasta,'HH12:MI') AS hasta FROM hora WHERE hasta >= '01:00' AND hasta <= '05:00' ORDER BY hasta ASC";
+                    ejecutar(sql);
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                string sql = "SELECT DISTINCT to_char(hasta,'HH12:MI') AS hasta FROM hora WHERE hasta >= '01:00' AND hasta <= '05:00' ORDER BY hasta ASC";
-                ejecutar(sql);
+                throw ex;
             }
         }
         public void consultorios()
         {
-            string sql = "SELECT numero FROM consultorio";
-            ejecutar(sql);
+            try
+            {
+                string sql = "SELECT numero FROM consultorio ORDER BY id_consultorio";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void todosConsultorios()
         {
-            string sql = "SELECT CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso";
-            ejecutar(sql);
+            try
+            {
+                string sql = "SELECT CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso ORDER BY CO.id_consultorio";
+                ejecutar(sql);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void consultorioEspecifico(string nombre)
         {
-            if (pg.start())
+            try
             {
-                string sql = "SELECT CO.id_consultorio,CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso AND CO.numero LIKE'" + nombre + "%' ";
-                da = new NpgsqlDataAdapter(sql, pg.conn);
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                pg.stop();
+                if (pg.start())
+                {
+                    string sql = "SELECT CO.id_consultorio,CO.numero AS consultorio,CO.referencia,PI.piso,PI.numero FROM consultorio CO, piso PI WHERE CO.piso_id = PI.id_piso AND CO.numero LIKE'" + nombre + "%' ";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

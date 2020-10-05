@@ -36,58 +36,77 @@ namespace Directorio.Backend
             }
             catch(Exception ex)
             {
-                throw ex;
+                return false;
+
             }
-            
+
         }
 
         public string eliminarCorreoID(string id)
         {
-            if (pg.start())
+            try
             {
-                using (var cmd = new NpgsqlCommand("SELECT eliminarCorreoID(@idcorreo)", pg.conn))
+                if (pg.start())
                 {
-                    cmd.Parameters.AddWithValue("idcorreo", id);
-                    bool x = (bool)cmd.ExecuteScalar();
-                    if (x)
+                    using (var cmd = new NpgsqlCommand("SELECT eliminarCorreoID(@idcorreo)", pg.conn))
                     {
-                        pg.stop();
-                        return "Correo elimiando satisfactoriamente";
-                    }
-                    else
-                    {
-                        pg.stop();
-                        return "Se ha generado un error al eliminar, revise los datos ingresados";
+                        cmd.Parameters.AddWithValue("idcorreo", id);
+                        bool x = (bool)cmd.ExecuteScalar();
+                        if (x)
+                        {
+                            pg.stop();
+                            return "Correo elimiando satisfactoriamente";
+                        }
+                        else
+                        {
+                            pg.stop();
+                            return "Se ha generado un error al eliminar, revise los datos ingresados";
+                        }
                     }
                 }
+                else
+                    return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+
             }
-            else
-                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+            catch(Exception ex)
+            {
+                return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
+
+            }
 
         }
 
         public string eliminarTelefonoID(string id)
         {
-            if (pg.start())
+            try
             {
-                using (var cmd = new NpgsqlCommand("SELECT eliminarTelefonoID(@id)", pg.conn))
+
+                if (pg.start())
                 {
-                    cmd.Parameters.AddWithValue("id", id);
-                    bool x = (bool)cmd.ExecuteScalar();
-                    if (x)
+                    using (var cmd = new NpgsqlCommand("SELECT eliminarTelefonoID(@id)", pg.conn))
                     {
-                        pg.stop();
-                        return "Teléfono elimiando satisfactoriamente";
-                    }
-                    else
-                    {
-                        pg.stop();
-                        return "Se ha generado un error al eliminar, revise los datos ingresados";
+                        cmd.Parameters.AddWithValue("id", id);
+                        bool x = (bool)cmd.ExecuteScalar();
+                        if (x)
+                        {
+                            pg.stop();
+                            return "Teléfono elimiando satisfactoriamente";
+                        }
+                        else
+                        {
+                            pg.stop();
+                            return "Se ha generado un error al eliminar, revise los datos ingresados";
+                        }
                     }
                 }
+                else
+                    return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
             }
-            else
-                return "Se genero un error en la base de datos, si el error persiste contactar con el administrador";
+            catch(Exception ex)
+            {
+                return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
+
+            }
         }
 
     }
