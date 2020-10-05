@@ -1,0 +1,20 @@
+﻿<Window x:Class="Directorio.Frontend.AgregarConsultorio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Directorio.Frontend"
+        mc:Ignorable="d"
+        Title="AgregarConsultorio" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="cboxpiso" HorizontalAlignment="Left" Margin="496,189,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Planta Baja" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Piso 1" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Sotano 1" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <TextBox x:Name="txtconsultorio" HorizontalAlignment="Left" Height="23" Margin="307,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nombre/Número del "/><Run Text="C"/><Run Text="o"/><Run Text="nsultorio"/><Run Text=":"/></TextBlock>
+        <Button x:Name="btnagregar" Content="Añadir" HorizontalAlignment="Left" Margin="350,256,0,0" VerticalAlignment="Top" Width="80" Height="26" Click="btnagregar_Click"/>
+
+    </Grid>
+</Window>
