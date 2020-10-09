@@ -5,16 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="ModificarEspecialidad" Height="450" Width="800">
+        Title="Directorio Médico" Height="518.037" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="155,82,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="22" Margin="190,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"  PreviewTextInput="NumberValidationTextBox" TextChanged="txtid_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="290,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Especialidad"/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="txtespecialidad" HorizontalAlignment="Left" Height="23" Margin="380,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextChanged="txtespecialidad_TextChanged"/>
-        <Button x:Name="btnactualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="576,78,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnactualizar_Click"/>
-        <DataGrid x:Name="dgespecialidad" HorizontalAlignment="Left" Height="190" Margin="23,219,0,0" VerticalAlignment="Top" Width="747"/>
-        <TextBlock HorizontalAlignment="Left" Margin="23,188,0,0" TextWrapping="Wrap" Text="Buscar por Nombre:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="146,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TextChanged="txtnombre_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="156,180,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="22" Margin="191,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"  PreviewTextInput="NumberValidationTextBox" TextChanged="txtid_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="291,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Especialidad"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="txtespecialidad" HorizontalAlignment="Left" Height="23" Margin="381,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextChanged="txtespecialidad_TextChanged"/>
+        <Button x:Name="btnactualizar" Style="{DynamicResource RoundCorner}" Content="Actualizar" HorizontalAlignment="Left" Margin="577,176,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnactualizar_Click" Background="#FF41A2FF" Foreground="White"/>
+        <DataGrid x:Name="dgespecialidad" HorizontalAlignment="Left" Height="190" Margin="24,275,0,0" VerticalAlignment="Top" Width="747"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,244,0,0" TextWrapping="Wrap" Text="Buscar por Nombre:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="147,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TextChanged="txtnombre_TextChanged"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="792" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="236" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="502,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="211"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="248,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"><Run Text="Modificar "/><Run Text="Especialidad"/></TextBlock>
 
     </Grid>
 </Window>

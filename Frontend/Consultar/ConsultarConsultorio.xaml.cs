@@ -37,5 +37,12 @@ namespace Directorio.Frontend
             consult.consultorioEspecifico(nombre);
             dgconsultorio.ItemsSource = consult.dt.DefaultView;
         }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarMenu menu = new ConsultarMenu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

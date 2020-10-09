@@ -5,13 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="AgregarMenu" Height="450" Width="923">
+        Title="Directorio Médico" Height="434" Width="923" WindowStartupLocation="CenterScreen" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid Margin="0,0,2,0">
-        <Button x:Name="btnmedico" Content="Médico" HorizontalAlignment="Left" Margin="78,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btnmedico_Click"/>
-        <Button x:Name="btnconsultorio" Content="Consultorio" HorizontalAlignment="Left" Margin="571,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btnconsultorio_Click"/>
-        <Button x:Name="btnespecialidad" Content="Especialidad" Margin="748,167,0,0" VerticalAlignment="Top" Height="115" Click="btnespecialidad_Click" HorizontalAlignment="Left" Width="113" RenderTransformOrigin="2.473,1.326"/>
-        <Button x:Name="btntelefono" Content="Teléfono" HorizontalAlignment="Left" Margin="241,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btntelefono_Click"/>
-        <Button x:Name="btncorreo" Content="Correo" HorizontalAlignment="Left" Margin="404,167,0,0" VerticalAlignment="Top" Width="113" Height="115" Click="btncorreo_Click"/>
+        <Button x:Name="btnmedico" Style="{DynamicResource RoundCorner}" Content="Médico" HorizontalAlignment="Left" Margin="40,186,0,0" VerticalAlignment="Top" Width="125" Height="125" Click="btnmedico_Click" Background="#FF41A2FF" Foreground="White" FontSize="16"/>
+        <Button x:Name="btnconsultorio" Style="{DynamicResource RoundCorner}" Content="Consultorio" HorizontalAlignment="Left" Margin="573,186,0,0" VerticalAlignment="Top" Width="125" Height="125" Click="btnconsultorio_Click" Background="#FF41A2FF" Foreground="White" FontSize="16"/>
+        <Button x:Name="btnespecialidad" Style="{DynamicResource RoundCorner}" Content="Especialidad" Margin="750,186,0,0" VerticalAlignment="Top" Height="125" Click="btnespecialidad_Click" HorizontalAlignment="Left" Width="125" RenderTransformOrigin="2.473,1.326" Background="#FF41A2FF" Foreground="White" FontSize="16"/>
+        <Button x:Name="btntelefono" Style="{DynamicResource RoundCorner}" Content="Teléfono" HorizontalAlignment="Left" Margin="218,186,0,0" VerticalAlignment="Top" Width="125" Height="125" Click="btntelefono_Click" Background="#FF41A2FF" Foreground="White" FontSize="16"/>
+        <Button x:Name="btncorreo" Style="{DynamicResource RoundCorner}" Content="Correo" HorizontalAlignment="Left" Margin="394,186,0,0" VerticalAlignment="Top" Width="125" Height="125" Click="btncorreo_Click" Background="#FF41A2FF" Foreground="White" FontSize="16"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="925" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill" Margin="0,0,-12,0"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="279" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="593,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="242"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="302,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"><Run Text="Seleccione "/><Run Text="un elemento para agregar"/></TextBlock>
 
     </Grid>
+
 </Window>

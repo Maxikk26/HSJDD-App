@@ -5,17 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Directorio Médico" Height="410" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="White" Foreground="Black" Icon="./Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,14">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="207,140,0,0" TextWrapping="Wrap" Text="Usuario" VerticalAlignment="Top" Height="32" Width="84" FontSize="24"/>
-        <TextBlock HorizontalAlignment="Left" Margin="207,194,0,0" TextWrapping="Wrap" Text="Contaseña" VerticalAlignment="Top" Height="32" Width="117" FontSize="24"/>
-        <PasswordBox x:Name="txtpassword" HorizontalAlignment="Left" Margin="393,203,0,0" VerticalAlignment="Top" Width="185" Height="21"/>
-        <TextBox x:Name="txtusername" HorizontalAlignment="Left" Height="23" Margin="393,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" TextChanged="TextBox_TextChanged"/>
-        <Button Content="Iniciar Sesión" HorizontalAlignment="Left" Margin="318,263,0,0" VerticalAlignment="Top" Width="147" Height="28" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="207,158,0,0" TextWrapping="Wrap" Text="Usuario" VerticalAlignment="Top" Height="32" Width="84" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="207,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="122" FontSize="24"><Run Text="Cont"/><Run Text="r"/><Run Text="aseña"/></TextBlock>
+        <PasswordBox x:Name="txtpassword" HorizontalAlignment="Left" Margin="393,221,0,0" VerticalAlignment="Top" Width="185" Height="21"/>
+        <TextBox x:Name="txtusername" HorizontalAlignment="Left" Height="23" Margin="393,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Iniciar Sesión"  Style="{DynamicResource RoundCorner}" HorizontalAlignment="Left" Margin="332,281,0,0" VerticalAlignment="Top" Width="129" Height="32" Click="Button_Click" Background="#FF41A2FF" Foreground="White"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="794" Source="./Frontend/Assets/img/banner.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="57,10,0,0" VerticalAlignment="Top" Width="243" Source="./Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="516,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
 
     </Grid>
 </Window>

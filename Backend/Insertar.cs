@@ -43,7 +43,7 @@ namespace Directorio.Backend
                     insertarPertenecia(medico);
                     validarAsistencia(medico, diurno);
                     validarAsistencia(medico, vespertino);
-                    pg.stop();
+                    bool y = pg.stop();
                     if (insert.Contains(false))
                         return "Error, revise los campos ingresados";
                     else
@@ -54,7 +54,8 @@ namespace Directorio.Backend
             }
             catch (Exception ex)
             {
-                return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
+                return ex.Message;
+                //return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
                 throw ex;
             }
         }
@@ -134,7 +135,7 @@ namespace Directorio.Backend
             try
             {
                 if (pg.start())
-                    using (var cmd = new NpgsqlCommand("SELECT insertarCorreoID(@id,@corre)", pg.conn))
+                    using (var cmd = new NpgsqlCommand("SELECT insertarCorreoID(@id,@correo)", pg.conn))
                     {
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.Parameters.AddWithValue("correo", correo);
@@ -157,7 +158,8 @@ namespace Directorio.Backend
             }
             catch(Exception ex)
             {
-                return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
+                return ex.Message;
+                //return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
             }
         }
         private void insertarMedicoConsultorio(Medico medico)
@@ -220,31 +222,46 @@ namespace Directorio.Backend
 
         public string crearInsertEspecialidad(string especialidad)
         {
-            bool x = false;
-            using (var cmd = new NpgsqlCommand("SELECT insertarEspecialidad(@especialidad)", pg.conn))
+            try
             {
-                cmd.Parameters.AddWithValue("especialidad", especialidad);
-                x = (bool)cmd.ExecuteScalar();
-                if (x)
+                if (pg.start())
                 {
-                    using (var cmad = new NpgsqlCommand("SELECT insertarDiaEspecialidad(@especialidad)", pg.conn))
+                    bool x = false;
+                    using (var cmd = new NpgsqlCommand("SELECT insertarEspecialidad(@especialidad)", pg.conn))
                     {
-                        cmad.Parameters.AddWithValue("especialidad", especialidad);
-                        x = (bool)cmad.ExecuteScalar();
+                        cmd.Parameters.AddWithValue("especialidad", especialidad);
+                        x = (bool)cmd.ExecuteScalar();
                         if (x)
                         {
-                            return "Especialidad registrada satisfactoriamente";
+                            using (var cmad = new NpgsqlCommand("SELECT insertarDiaEspecialidad(@especialidad)", pg.conn))
+                            {
+                                cmad.Parameters.AddWithValue("especialidad", especialidad);
+                                x = (bool)cmad.ExecuteScalar();
+                                if (x)
+                                {
+                                    pg.stop();
+                                    return "Especialidad registrada satisfactoriamente";
+                                }
+                                else
+                                {
+                                    pg.stop();
+                                    return "Error al registrar la especialidad, intente de nuevo";
+                                }
+                            }
                         }
                         else
                         {
                             return "Error al registrar la especialidad, intente de nuevo";
                         }
                     }
+
                 }
                 else
-                {
                     return "Error al registrar la especialidad, intente de nuevo";
-                }
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
             }
 
 
@@ -318,7 +335,8 @@ namespace Directorio.Backend
             }
             catch(Exception ex)
             {
-                return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
+                return ex.Message;
+                //return "Se genero un error en la base de datos, intente de nuevo. Si el error persiste contactar con el administrador";
             }
         }
 
@@ -344,6 +362,7 @@ namespace Directorio.Backend
         {
             foreach(string s in horario.Dias)
             {
+                Console.WriteLine("asistencia: {0}", s);
                 switch (s)
                 {
                     case "Lunes":
@@ -352,7 +371,7 @@ namespace Directorio.Backend
                     case "Martes":
                         insertarAsistencia(medico, horario, s);
                         break;
-                    case "Miércoles":
+                    case "Miercoles":
                         insertarAsistencia(medico, horario, s);
                         break;
                     case "Jueves":
@@ -370,6 +389,9 @@ namespace Directorio.Backend
         {
             try
             {
+                Console.WriteLine("dia: {0}", dia);
+                Console.WriteLine("desde: {0}", horario.desde);
+                Console.WriteLine("hasta: {0}", horario.hasta);
                 using (var cmd = new NpgsqlCommand("SELECT insertarAsistencia(@cedula,@desde,@hasta,@dia)", pg.conn))
                 {
                     cmd.Parameters.AddWithValue("cedula", medico.cedula);

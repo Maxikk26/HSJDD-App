@@ -131,6 +131,40 @@ namespace Directorio.Backend
                 throw ex;
             }
         }
+
+        public void correosEspecificos(string nombre)
+        {
+            try
+            {
+                if (pg.start())
+                {
+                    string sql = "SELECT ME.id_medico, ME.p_nombre, ME.p_apellido, ME.s_apellido, CO.correo FROM medico ME, correo Co WHERE ME.id_medico = CO.medico_id AND ME.p_nombre LIKE '" + nombre + "%'";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void correosEspecificos2(string nombre)
+        {
+            try
+            {
+                if (pg.start())
+                {
+                    string sql = "SELECT CO.id_correo, ME.p_nombre, ME.p_apellido, ME.s_apellido, CO.correo FROM medico ME, correo Co WHERE ME.id_medico = CO.medico_id AND ME.p_nombre LIKE '" + nombre + "%'";
+                    ejecutarSimple(sql);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void telefonos(string nombre,bool medico)
         {
             try

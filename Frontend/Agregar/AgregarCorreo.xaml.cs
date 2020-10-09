@@ -30,7 +30,6 @@ namespace Directorio.Frontend
             ins = new Insertar();
             consult = new Consultar();
             err = new List<bool>();
-            consultar();
         }
 
         private void btnagregar_Click(object sender, RoutedEventArgs e)
@@ -76,7 +75,7 @@ namespace Directorio.Frontend
             string nombre = txtnombre.Text;
             if (nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.correos();
+            consult.correosEspecificos(nombre);
             dgcorreo.ItemsSource = consult.dt.DefaultView;
         }
 
@@ -91,6 +90,11 @@ namespace Directorio.Frontend
             e.Handled = regex.IsMatch(e.Text);
         }
 
-
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMenu menu = new AgregarMenu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

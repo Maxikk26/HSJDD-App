@@ -5,14 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="EliminarCorreo" Height="450" Width="800">
+        Title="Directorio Médico" Height="528" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
-        <DataGrid x:Name="dgcorreo" HorizontalAlignment="Left" Height="171" Margin="26,211,0,0" VerticalAlignment="Top" Width="730"/>
-        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="23" Margin="341,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" PreviewTextInput="NumberValidationTextBox" TextChanged="txtid_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="304,78,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="142,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextChanged="txtnombre_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,179,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
-        <Button x:Name="btneliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="444,76,0,0" VerticalAlignment="Top" Width="90" Height="23" Click="btneliminar_Click"/>
+        <DataGrid x:Name="dgcorreo" HorizontalAlignment="Left" Height="172" Margin="32,281,0,0" VerticalAlignment="Top" Width="730"/>
+        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="24" Margin="348,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" PreviewTextInput="NumberValidationTextBox" TextChanged="txtid_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="310,201,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="24" Margin="148,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" TextChanged="txtnombre_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="32,249,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
+        <Button x:Name="btneliminar" Style="{DynamicResource RoundCorner}" Content="Eliminar" HorizontalAlignment="Left" Margin="450,199,0,0" VerticalAlignment="Top" Width="90" Height="24" Click="btneliminar_Click" Foreground="White"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="793" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill" Margin="0,0,-1,0"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="239" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="508,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="215"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="287,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Text="Eliminar Correos"/>
 
     </Grid>
 </Window>

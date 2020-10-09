@@ -100,8 +100,15 @@ namespace Directorio.Frontend
             string nombre = txtnombre.Text;
             if (nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.especialidadEspecifica(nombre);
+            consult.consultorioEspecifico(nombre);
             dgconsultorio.ItemsSource = consult.dt.DefaultView;
+        }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarMenu menu = new ModificarMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }

@@ -5,11 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="ConsultarConsultorio" Height="450" Width="800">
+        Title="Directorio Médico" Height="544.5" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
     <Grid>
-        <DataGrid x:Name="dgconsultorio" HorizontalAlignment="Left" Height="281" Margin="42,115,0,0" VerticalAlignment="Top" Width="710"/>
-        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="164,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TextChanged="txtnombre_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,82,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgconsultorio" HorizontalAlignment="Left" Height="254" Margin="45,230,0,0" VerticalAlignment="Top" Width="710"/>
+        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="24" Margin="172,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TextChanged="txtnombre_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,182,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="793" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill" Margin="0,0,-1,0"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="239" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="508,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="215"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="236,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"><Run Text="Consulta de "/><Run Text="Consultorios"/></TextBlock>
 
     </Grid>
 </Window>

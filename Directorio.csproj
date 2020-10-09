@@ -118,10 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frontend\Modificar\ModificarMedico.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Frontend\Agregar\AgregarConsultorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,9 +202,6 @@
     <Compile Include="Frontend\Modificar\ModificarEspecialidad.xaml.cs">
       <DependentUpon>ModificarEspecialidad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\Modificar\ModificarMedico.xaml.cs">
-      <DependentUpon>ModificarMedico.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Frontend\Agregar\AgregarConsultorio.xaml.cs">
       <DependentUpon>AgregarConsultorio.xaml</DependentUpon>
     </Compile>
@@ -277,6 +270,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Frontend\Assets\img\icono.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Frontend\Assets\img\banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Frontend\Assets\img\logotipo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

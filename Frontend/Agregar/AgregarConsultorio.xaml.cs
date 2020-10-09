@@ -76,5 +76,12 @@ namespace Directorio.Frontend
                 txt.BorderBrush = System.Windows.Media.Brushes.Red;
             }
         }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMenu menu = new AgregarMenu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

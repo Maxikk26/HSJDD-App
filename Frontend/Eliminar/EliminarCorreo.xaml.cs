@@ -54,7 +54,7 @@ namespace Directorio.Frontend
             string nombre = txtnombre.Text;
             if (nombre != null && nombre != "")
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
-            consult.correos();
+            consult.correosEspecificos2(nombre);
             dgcorreo.ItemsSource = consult.dt.DefaultView;
         }
 
@@ -75,6 +75,13 @@ namespace Directorio.Frontend
                 btneliminar.IsEnabled = true;
             else
                 btneliminar.IsEnabled = false;
+        }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarMenu menu = new EliminarMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }

@@ -45,5 +45,12 @@ namespace Directorio.Frontend
             esp.Show();
             this.Close();
         }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.Show();
+            this.Close();
+        }
     }
 }

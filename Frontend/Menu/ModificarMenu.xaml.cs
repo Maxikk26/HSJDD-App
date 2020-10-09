@@ -27,7 +27,7 @@ namespace Directorio.Frontend
 
         private void btnmedico_Click(object sender, RoutedEventArgs e)
         {
-            ModificarMedico med = new ModificarMedico();
+            ModificarDatosBasicos med = new ModificarDatosBasicos();
             med.Show();
             this.Close();
         }
@@ -43,6 +43,13 @@ namespace Directorio.Frontend
         {
             ModificarEspecialidad esp = new ModificarEspecialidad();
             esp.Show();
+            this.Close();
+        }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.Show();
             this.Close();
         }
     }

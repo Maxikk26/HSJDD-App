@@ -83,5 +83,12 @@ namespace Directorio.Frontend
             consult.especialidadEspecifica(nombre);
             dgespecialidad.ItemsSource = consult.dt.DefaultView;
         }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarMenu menu = new ModificarMenu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

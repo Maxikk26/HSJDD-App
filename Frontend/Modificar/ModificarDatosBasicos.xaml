@@ -5,22 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="ActualizarDatosBasicos" Height="609" Width="800">
+        Title="Directorio Médico" Height="654" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid Margin="0,0,0,11">
-        <TextBlock HorizontalAlignment="Left" Margin="304,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="ID:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="22" Margin="364,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="141,145,0,0" TextWrapping="Wrap" Text="Primer Nombre" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtpnombre" HorizontalAlignment="Left" Height="23" Margin="256,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="128,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Segundo "/><Run Text="Nombre"/></TextBlock>
-        <TextBox x:Name="txtsnombre" HorizontalAlignment="Left" Height="23" Margin="256,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="436,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Segundo "/><Run Text="Apellido"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="449,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Primer "/><Run Text="Apellido"/></TextBlock>
-        <TextBox x:Name="txtpapellido" HorizontalAlignment="Left" Height="23" Margin="571,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtsapellido" HorizontalAlignment="Left" Height="23" Margin="571,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnactualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="379,265,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.04,-0.75" Click="btnactualizar_Click"/>
-        <DataGrid x:Name="dgmedico" HorizontalAlignment="Left" Height="145" Margin="36,384,0,0" VerticalAlignment="Top" Width="718"/>
-        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="22" Margin="166,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.538,0.457" TextChanged="txtnombre_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,344,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="301,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="ID:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="22" Margin="361,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="138,243,0,0" TextWrapping="Wrap" Text="Primer Nombre" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtpnombre" HorizontalAlignment="Left" Height="23" Margin="253,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="125,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Segundo "/><Run Text="Nombre"/></TextBlock>
+        <TextBox x:Name="txtsnombre" HorizontalAlignment="Left" Height="23" Margin="253,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="433,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Segundo "/><Run Text="Apellido"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="446,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Primer "/><Run Text="Apellido"/></TextBlock>
+        <TextBox x:Name="txtpapellido" HorizontalAlignment="Left" Height="23" Margin="568,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtsapellido" HorizontalAlignment="Left" Height="23" Margin="568,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnactualizar" Style="{DynamicResource RoundCorner}" Content="Actualizar" HorizontalAlignment="Left" Margin="376,363,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.04,-0.75" Click="btnactualizar_Click" Background="#FF41A2FF" Foreground="White" Height="29"/>
+        <DataGrid x:Name="dgmedico" HorizontalAlignment="Left" Height="145" Margin="38,453,0,0" VerticalAlignment="Top" Width="718"/>
+        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="22" Margin="168,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.538,0.457" TextChanged="txtnombre_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="38,415,0,0" TextWrapping="Wrap" Text="Buscar por Nombre" VerticalAlignment="Top"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="794" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="239" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="509,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="214"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="262,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"><Run Text="Modificar "/><Run Text="Datos Básicos"/></TextBlock>
 
     </Grid>
 </Window>

@@ -77,5 +77,12 @@ namespace Directorio.Frontend
 
             }
         }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarMenu menu = new EliminarMenu();
+            menu.Show();
+            this.Close();
+        }
     }
 }

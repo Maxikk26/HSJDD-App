@@ -27,8 +27,8 @@ namespace Directorio.Frontend
         Consultar consult;
         private List<bool> err = new List<bool>();
         private Medico medico = new Medico();
-        private Horario diurno = new Horario();
-        private Horario vespertino = new Horario();
+        private Horario diurno;
+        private Horario vespertino;
         private string mensajesError = String.Empty;
         public AgregarMedico()
         {
@@ -70,6 +70,8 @@ namespace Directorio.Frontend
         {
             try
             {
+                diurno = new Horario();
+                vespertino = new Horario();
                 err.Clear();
                 vacio(txtcedula, err);
                 medico.cedula = txtcedula.Text;
@@ -194,7 +196,7 @@ namespace Directorio.Frontend
                             case "Martes":
                                 horario.Dias.Add(dia);
                                 break;
-                            case "Miércoles":
+                            case "Miercoles":
                                 horario.Dias.Add(dia);
                                 break;
                             case "Jueves":
@@ -229,7 +231,7 @@ namespace Directorio.Frontend
                             case "Martes":
                                 horario.Dias.Add(dia);
                                 break;
-                            case "Miércoles":
+                            case "Miercoles":
                                 horario.Dias.Add(dia);
                                 break;
                             case "Jueves":
@@ -436,6 +438,13 @@ namespace Directorio.Frontend
                 medico.cargo = chboxlic.Content.ToString();
 
 
+        }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMenu menu = new AgregarMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }

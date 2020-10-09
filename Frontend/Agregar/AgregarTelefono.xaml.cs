@@ -1,4 +1,5 @@
 ﻿using Directorio.Backend;
+using Directorio.Frontend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Directorio.Frontend
 
                 string res = "";
                 err = new List<bool>();
-                if (chboxcelular.IsChecked == false && chboxcelular.IsChecked == false)
+                if (chboxcelular.IsChecked == false && chboxfijo.IsChecked == false)
                 {
                     MessageBox.Show("Elija un telefono celular o fijo para agregar", "Directorio Medico", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -55,9 +56,14 @@ namespace Directorio.Frontend
                         verificarPrefijo(cboxfijo);
                         if (!err.Contains(true))
                         {
-                            var numero = cboxfijo.SelectedItem.ToString();
-                            numero = numero + "-" + txtfijo.Text;
-                            res = ins.crearInsertTelefono(txtid.Text,numero)+"\r\n";
+                            var item = (ComboBoxItem)cboxfijo.SelectedValue;
+                            var content = (string)item.Content;
+                            string numero = content + "-" + txtfijo.Text;
+                            if(numero.Length > 13)
+                                MessageBox.Show("El numero debe contener maximo 13 caracteres", "Directorio Medico", MessageBoxButton.OK, MessageBoxImage.Information);
+                            else
+                                res = ins.crearInsertTelefono(txtid.Text,numero)+"\r\n";
+
                         }
                     }
                     else if (chboxcelular.IsChecked == true)
@@ -66,9 +72,13 @@ namespace Directorio.Frontend
                         verificarPrefijo(cboxcelular);
                         if (!err.Contains(true))
                         {
-                            var numero = cboxcelular.SelectedItem.ToString();
-                            numero = numero + "-" + txtfijo.Text;
-                            res = ins.crearInsertTelefono(txtid.Text, numero) + "\r\n";
+                            var item = (ComboBoxItem)cboxcelular.SelectedValue;
+                            var content = (string)item.Content;
+                            string numero = content + "-" + txtcelular.Text;
+                            if(numero.Length > 13)
+                                MessageBox.Show("El numero debe contener maximo 13 caracteres", "Directorio Medico", MessageBoxButton.OK, MessageBoxImage.Information);
+                            else
+                                res = ins.crearInsertTelefono(txtid.Text, numero) + "\r\n";
                         }
                     }
                     MessageBox.Show(res, "Directorio Medico", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -144,6 +154,13 @@ namespace Directorio.Frontend
                 nombre = nombre.First().ToString().ToUpper() + nombre.Substring(1);
             consult.telefonos(nombre,true);
             dgtelefono.ItemsSource = consult.dt.DefaultView;
+        }
+
+        private void btnback_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMenu menu = new AgregarMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }

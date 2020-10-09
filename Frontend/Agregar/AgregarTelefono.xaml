@@ -5,23 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Directorio.Frontend"
         mc:Ignorable="d"
-        Title="ModificarTelefono" Height="450" Width="870.5">
+        Title="Directorio Médico" Height="591.667" Width="870.5" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Directorio;component/Frontend/Assets/img/icono.jpg">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="1">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#41A2FF"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#005DA3" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="74,104,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="23" Margin="114,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" PreviewTextInput="NumberValidationTextBox"/>
-        <ComboBox x:Name="cboxcelular" HorizontalAlignment="Left" Margin="323,102,0,0" VerticalAlignment="Top" Width="57" Height="21">
-            <ComboBoxItem Content="0424" HorizontalAlignment="Left" Width="92"/>
-            <ComboBoxItem Content="0414" HorizontalAlignment="Left" Width="92"/>
+        <TextBlock HorizontalAlignment="Left" Margin="76,202,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtid" HorizontalAlignment="Left" Height="23" Margin="116,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" PreviewTextInput="NumberValidationTextBox"/>
+        <ComboBox x:Name="cboxcelular" HorizontalAlignment="Left" Margin="325,200,0,0" VerticalAlignment="Top" Width="57" Height="21">
+            <ComboBoxItem Content="0424" HorizontalAlignment="Left" Width="57"/>
+            <ComboBoxItem Content="0414" HorizontalAlignment="Left" Width="57"/>
+            <ComboBoxItem Content="0416" HorizontalAlignment="Left" Width="57"/>
+            <ComboBoxItem Content="0412" HorizontalAlignment="Left" Width="56"/>
         </ComboBox>
-        <TextBox x:Name="txtcelular" HorizontalAlignment="Left" Height="23" Margin="397,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox x:Name="txtfijo" HorizontalAlignment="Left" Height="23" Margin="666,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" PreviewTextInput="NumberValidationTextBox"/>
-        <ComboBox x:Name="cboxfijo" HorizontalAlignment="Left" Margin="596,101,0,0" VerticalAlignment="Top" Width="57"/>
-        <DataGrid x:Name="dgtelefono" HorizontalAlignment="Left" Height="161" Margin="24,230,0,0" VerticalAlignment="Top" Width="808"/>
-        <CheckBox x:Name="chboxcelular" Content="Telefono Celular:" HorizontalAlignment="Left" Margin="202,105,0,0" VerticalAlignment="Top" Click="chboxcelular_Click"/>
-        <CheckBox x:Name="chboxfijo" Content="Telefono Fijo:" HorizontalAlignment="Left" Margin="492,105,0,0" VerticalAlignment="Top" Click="chboxfijo_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,201,0,0" TextWrapping="Wrap" Text="Buscar por Nombre:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="153,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" TextChanged="txtnombre_TextChanged_1"/>
-        <Button x:Name="btnagregar" Content="Agregar" HorizontalAlignment="Left" Margin="397,155,0,0" VerticalAlignment="Top" Width="75" Click="btnagregar_Click"/>
+        <TextBox x:Name="txtcelular" HorizontalAlignment="Left" Height="23" Margin="399,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txtfijo" HorizontalAlignment="Left" Height="23" Margin="668,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" PreviewTextInput="NumberValidationTextBox"/>
+        <ComboBox x:Name="cboxfijo" HorizontalAlignment="Left" Margin="598,199,0,0" VerticalAlignment="Top" Width="57">
+            <ComboBoxItem Content="0212" HorizontalAlignment="Left" Width="57"/>
+        </ComboBox>
+        <DataGrid x:Name="dgtelefono" HorizontalAlignment="Left" Height="161" Margin="24,357,0,0" VerticalAlignment="Top" Width="808"/>
+        <CheckBox x:Name="chboxcelular" Content="Telefono Celular:" HorizontalAlignment="Left" Margin="204,203,0,0" VerticalAlignment="Top" Click="chboxcelular_Click"/>
+        <CheckBox x:Name="chboxfijo" Content="Telefono Fijo:" HorizontalAlignment="Left" Margin="494,203,0,0" VerticalAlignment="Top" Click="chboxfijo_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,317,0,0" TextWrapping="Wrap" Text="Buscar por Nombre:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="23" Margin="157,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" TextChanged="txtnombre_TextChanged_1"/>
+        <Button x:Name="btnagregar" Style="{DynamicResource RoundCorner}" Content="Agregar" HorizontalAlignment="Left" Margin="399,267,0,0" VerticalAlignment="Top" Width="79" Click="btnagregar_Click" Background="#FF41A2FF" Foreground="White" Height="28" RenderTransformOrigin="0.532,1.071"/>
+        <Image x:Name="imgbanner" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="862" Source="/Directorio;component/Frontend/Assets/img/banner.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="52" Margin="137,10,0,0" VerticalAlignment="Top" Width="259" Source="/Directorio;component/Frontend/Assets/img/logotipo.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="551,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="224"><Run Text="DIRECTORIO M"/><Run Text="É"/><Run Text="DICO"/></TextBlock>
+        <Button x:Name="btnback" Content="3" FontSize="20" HorizontalAlignment="Left" Margin="50,22,0,0" VerticalAlignment="Top" Width="30" Height="30" FontFamily="Marlett" Background="#FF41A2FF" Foreground="White" Click="btnback_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="#41A2FF"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="325,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"><Run Text="Añadir"/><Run Text=" "/><Run Text="Tel"/><Run Text="é"/><Run Text="fonos"/></TextBlock>
 
     </Grid>
 </Window>

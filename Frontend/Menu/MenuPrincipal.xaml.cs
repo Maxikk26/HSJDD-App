@@ -20,11 +20,11 @@ namespace Directorio.Frontend
     /// <summary>
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class MenuPrincipal : Window
     {
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
-        public MainMenu()
+        public MenuPrincipal()
         {
             InitializeComponent();
         }
